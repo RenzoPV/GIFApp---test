@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <h2>GIF App</h2>
+    <div class="input-group mb-3">
+        <input
+            type="text"
+            placeholder="Busca GIFs..."
+            [(ngModel)]="query"
+            (keyup.enter)="search()"
+            class="form-control"
+        />
+        <button class="btn btn-primary" (click)="search()">Buscar</button>
+    </div>
+  
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-12 sidebar">
+            <h5>Historial:</h5>
+            <div class="historyBar">
+            <ul class="list-unstyled">
+                <li *ngFor="let item of searchHistory">
+                    <button class="btn btn-link item-btn" (click)="searchFromHistory(item)">
+                        {{ item }}
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+  
+    <div class="col-lg-9 col-md-8 col-sm-12">
+        <div class="row">
+            <div
+                class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3"
+                *ngFor="let gif of gifs">
+                <img [src]="gif.images.fixed_height.url" class="img-fluid rounded" alt="GIF"/>
+            </div>
+        </div>
+    </div>
+</div>
+  
